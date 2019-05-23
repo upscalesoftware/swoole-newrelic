@@ -24,10 +24,15 @@ No code changes are needed beyond editing a few lines of code in the server entr
 Install the monitoring instrumentation for all requests:
 ```php
 $server->on('request', function ($request, $response) use ($server) {
-    $response->header('Content-Type', 'text/plain');
-    // PHP processing for 100..300 ms...
+    // PHP processing within request boundary...
     usleep(1000 * rand(100, 300));
+    
+    // Send response
+    $response->header('Content-Type', 'text/plain');
     $response->end("Served by worker {$server->worker_id}\n");
+    
+    // PHP processing outside of request boundary...
+    usleep(1000 * rand(50, 150));
 });
 
 $apm = new \Upscale\Swoole\Newrelic\Apm(

@@ -15,7 +15,7 @@
         "php": ">=5.5",
         "ext-swoole": "^4.0",
         "ext-newrelic": ">=3.0.5.95",
-        "upscale/swoole-reflection": "^1.1"
+        "upscale/swoole-reflection": "^1.2"
     },
     "autoload": {
         "psr-4": {"Upscale\\Swoole\\Newrelic\\": "src/"}

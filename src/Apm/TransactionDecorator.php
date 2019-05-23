@@ -5,6 +5,8 @@
  */
 namespace Upscale\Swoole\Newrelic\Apm;
 
+use Upscale\Swoole\Reflection\Http\Response;
+
 class TransactionDecorator
 {
     /**
@@ -51,6 +53,8 @@ class TransactionDecorator
         if (!$this->transactionLevel) {
             $this->transaction = $this->transactionFactory->create($request);
             $this->transaction->start();
+            $response = new Response\Observable($response);
+            $response->onHeadersSentBefore([$this->transaction, 'stop']);
         }
         $this->transactionLevel++;
         $middleware = $this->subject;
