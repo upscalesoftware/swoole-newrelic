@@ -1,0 +1,23 @@
+{
+    "name": "upscale/swoole-newrelic",
+    "description": "Swoole web-server monitoring via New Relic APM",
+    "version": "1.0.0",
+    "keywords": ["Swoole", "New Relic", "Newrelic", "APM", "monitoring", "integration"],
+    "homepage": "https://github.com/upscalesoftware/swoole-newrelic",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Upscale Software Team",
+            "email": "info@upscalesoftware.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.5",
+        "ext-swoole": "^4.0",
+        "ext-newrelic": ">=3.0.5.95",
+        "upscale/swoole-reflection": "^1.1"
+    },
+    "autoload": {
+        "psr-4": {"Upscale\\Swoole\\Newrelic\\": "src/"}
+    }
+}
