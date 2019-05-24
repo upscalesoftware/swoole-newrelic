@@ -15,6 +15,7 @@ The library is to be installed via [Composer](https://getcomposer.org/) as a dep
 ```bash
 composer require upscale/swoole-newrelic
 ```
+
 ## Usage
 
 The easiest way to start monitoring is to activate the profiler globally for all requests from start to finish.
@@ -40,10 +41,14 @@ $apm = new \Upscale\Swoole\Newrelic\Apm(
 );
 $apm->instrument($server);
 unset($apm);
+
+$server->start();
 ```
 
 ## Limitations
 
+Transactions are classified as "Non-web transactions" due to the [CLI SAPI](https://www.php.net/manual/en/features.commandline.introduction.php) environment.
+  
 Nested requests invoked via the [coroutine](https://www.swoole.co.uk/coroutine) mechanism are reported as part of the topmost transaction.
 
 ## Contributing
