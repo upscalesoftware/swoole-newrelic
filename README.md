@@ -22,9 +22,8 @@ composer require upscale/swoole-newrelic
 
 ## Usage
 
-The easiest way to start monitoring is to activate the profiler globally for all requests from start to finish.
-This approach is by design completely transparent to an application running on the server.
-No code changes are needed beyond editing a few lines of code in the server entry point.
+Monitoring of all incoming requests from start to finish can be activated via a few lines of code in the server entry point.
+The monitoring instrumentation is by design completely transparent to an application running on the server.
 
 Install the monitoring instrumentation for all requests:
 ```php
