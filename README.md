@@ -9,6 +9,10 @@ This library enables monitoring of PHP applications running on [Swoole](https://
 - Request transaction boundaries
 - Coroutine requests aggregation
 
+## Demo
+
+![New Relic APM dashboard](docs/img/newrelic_apm_swoole.png)
+
 ## Installation
 
 The library is to be installed via [Composer](https://getcomposer.org/) as a dependency:
