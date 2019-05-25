@@ -34,7 +34,7 @@ class Apm
     public function instrument(\Swoole\Http\Server $server)
     {
         // Dismiss monitoring unaware of transaction boundaries of the event loop execution model 
-        newrelic_ignore_transaction();
+        newrelic_end_transaction(true);
         
         $server = new \Upscale\Swoole\Reflection\Http\Server($server);
         $server->setMiddleware($this->monitor($server->getMiddleware()));
@@ -44,7 +44,7 @@ class Apm
      * Decorate a given middleware with monitoring instrumentation
      * 
      * @param callable $middleware
-     * @return Apm\TransactionDecorator
+     * @return callable
      */
     public function monitor(callable $middleware)
     {
