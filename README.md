@@ -66,8 +66,8 @@ unset($rum, $apm);
 $server->start();
 ```
 
-APM and Browser instrumentation can be used individually or in conjunction.
-Browser MUST be instrumented first.
+APM instrumentation can be used standalone or in conjunction with the Browser.
+Browser must be instrumented first.
 
 Browser instrumentation is applied to non-AJAX requests having `text/html` response MIME type (Swoole default).
 
