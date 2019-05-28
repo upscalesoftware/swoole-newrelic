@@ -49,6 +49,7 @@ class Transaction
         $snapshot = $this->emulateGlobalState($this->request);
         try {
             newrelic_start_transaction($this->appName, $this->license);
+            newrelic_background_job(false);
         } finally {
             $this->restoreGlobalState($snapshot);
         }

@@ -73,8 +73,6 @@ Browser instrumentation is applied to non-AJAX requests having `text/html` respo
 
 ## Limitations
 
-Transactions are classified by New Relic APM as "Non-web transactions" due to the [CLI SAPI](https://www.php.net/manual/en/features.commandline.introduction.php) environment.
-
 Concurrent requests subject to [coroutine](https://www.swoole.co.uk/coroutine) multi-tasking are reported as part of the first in-flight transaction.
 
 ## Contributing
