@@ -47,7 +47,6 @@ $server->on('request', function ($request, $response) use ($page) {
     usleep(1000 * rand(100, 300));
     
     // Send response
-    $response->header('Content-Type', 'text/html; charset=utf-8');
     $response->end($page);
     
     // PHP processing outside of request boundary...
@@ -70,7 +69,7 @@ $server->start();
 APM and Browser instrumentation can be used individually or in conjunction.
 Browser MUST be instrumented first.
 
-Browser instrumentation is applied to non-AJAX requests having `text/html` response body MIME type.
+Browser instrumentation is applied to non-AJAX requests having `text/html` response MIME type (Swoole default).
 
 ## Limitations
 

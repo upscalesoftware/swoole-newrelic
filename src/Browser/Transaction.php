@@ -19,17 +19,24 @@ class Transaction
      * @var Beacon
      */
     protected $beacon;
+
+    /**
+     * @var string|null
+     */
+    protected $defaultMimeType;
     
     /**
      * Inject dependencies
      * 
      * @param \Swoole\Http\Response $response
      * @param Beacon $beacon
+     * @param string|null $defaultMimeType Default Content-Type response header
      */
-    public function __construct(\Swoole\Http\Response $response, Beacon $beacon)
+    public function __construct(\Swoole\Http\Response $response, Beacon $beacon, $defaultMimeType = null)
     {
         $this->response = $response;
         $this->beacon = $beacon;
+        $this->defaultMimeType = $defaultMimeType;
     }
     
     /**
@@ -45,7 +52,7 @@ class Transaction
     }
 
     /**
-     * Whether a given response body has an HTML format
+     * Whether a given response MIME type is HTML
      * 
      * @param \Swoole\Http\Response $response
      * @return bool
@@ -53,7 +60,7 @@ class Transaction
     protected function isHtml(\Swoole\Http\Response $response)
     {
         $mimeType = $this->getMimeType((array)$response->header);
-        return (stripos($mimeType, 'text/html') === 0);
+        return $mimeType && (stripos($mimeType, 'text/html') === 0);
     }
 
     /**
@@ -69,6 +76,6 @@ class Transaction
                 return $value;
             }
         }
-        return null;
+        return $this->defaultMimeType;
     }
 }
