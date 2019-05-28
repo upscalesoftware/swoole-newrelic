@@ -8,6 +8,11 @@ namespace Upscale\Swoole\Newrelic\Browser;
 class TransactionFactory
 {
     /**
+     * @var Beacon
+     */
+    protected $beacon;
+    
+    /**
      * @var string
      */
     protected $defaultMimeType;
@@ -15,11 +20,13 @@ class TransactionFactory
     /**
      * Inject dependencies
      *
+     * @param Beacon|null $beacon 
      * @param string $defaultMimeType Default Content-Type response header 
      * @link https://github.com/swoole/swoole-src/blob/master/swoole_http2_server.cc
      */
-    public function __construct($defaultMimeType = 'text/html')
+    public function __construct(Beacon $beacon = null, $defaultMimeType = 'text/html')
     {
+        $this->beacon = $beacon ?: new Beacon();
         $this->defaultMimeType = $defaultMimeType;
     }
     
@@ -31,6 +38,6 @@ class TransactionFactory
      */
     public function create(\Swoole\Http\Response $response)
     {
-        return new Transaction($response, new Beacon(), $this->defaultMimeType);
+        return new Transaction($response, $this->beacon, $this->defaultMimeType);
     }
 }
