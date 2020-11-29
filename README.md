@@ -20,6 +20,8 @@ composer require upscale/swoole-newrelic
 
 ## Usage
 
+### Production
+
 Monitoring of all incoming requests from start to finish can be activated via a few lines of code in the server entry point.
 The monitoring instrumentation is by design completely transparent to an application running on the server.
 
@@ -70,6 +72,24 @@ APM instrumentation can be used standalone or in conjunction with the Browser.
 Browser must be instrumented first.
 
 Browser instrumentation is applied to non-AJAX requests having `text/html` response MIME type (Swoole default).
+
+### Development
+
+Having to install the New Relic PHP extension locally may be inconvenient and outright undesirable for developers.
+The workaround is to replace the New Relic reporting functionality with the "stub" implementation doing nothing:
+```json
+{
+    "require": {
+        "upscale/swoole-newrelic": "^1.0",
+        "killmails/polyfill-newrelic": "^1.0"
+    },
+    "replace": {
+        "ext-newrelic": "*"
+    }
+}
+```
+
+The PHP extension is used when installed and substituted with the [polyfill](https://github.com/killmails/polyfill-newrelic) otherwise.  
 
 ## Limitations
 
