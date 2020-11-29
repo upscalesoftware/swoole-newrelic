@@ -22,7 +22,7 @@ composer require upscale/swoole-newrelic
 
 ### Production
 
-Monitoring of all incoming requests from start to finish can be activated via a few lines of code in the server entry point.
+Monitoring of requests from start to finish can be activated by adding a few lines of code to the server entry point.
 The monitoring instrumentation is by design completely transparent to an application running on the server.
 
 Install the monitoring instrumentation for all requests:
@@ -68,10 +68,9 @@ unset($rum, $apm);
 $server->start();
 ```
 
-APM instrumentation can be used standalone or in conjunction with the Browser.
-Browser must be instrumented first.
+APM can be standalone or used in conjunction with the real user monitoring. RUM must be instrumented first.
 
-Browser instrumentation is applied to non-AJAX requests having `text/html` response MIME type (Swoole default).
+Browser instrumentation is applied to non-AJAX requests having `text/html` response MIME type (the default).
 
 ### Development
 
