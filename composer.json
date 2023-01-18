@@ -1,7 +1,7 @@
 {
     "name": "upscale/swoole-newrelic",
     "description": "New Relic APM monitoring of Swoole web-server",
-    "version": "1.5.0",
+    "version": "1.6.0",
     "keywords": ["Swoole", "New Relic", "Newrelic", "APM", "Browser", "RUM", "monitoring", "integration"],
     "homepage": "https://github.com/upscalesoftware/swoole-newrelic",
     "license": "Apache-2.0",
